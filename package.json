@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
-    "axios": "^1.7.9",
+    "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "export-from-json": "^1.7.4",
     "moment": "^2.30.1",
@@ -19,11 +19,13 @@
     "react-code-input": "^3.10.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
+    "react-number-format": "^5.4.3",
     "react-paginate": "^8.3.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
-    "react-toastify": "^11.0.3",
-    "sweetalert2": "^11.15.10"
+    "recharts": "^2.15.1",
+    "redux": "^5.0.1",
+    "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",

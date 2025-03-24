@@ -7,7 +7,7 @@ import supplierReducer from "../state-slice/supplier-slice";
 import categoryReducer from "../state-slice/category-slice";
 import customerReducer from "../state-slice/customer-slice";
 import expenseReducer from "../state-slice/expense-slice";
-import expensetypeReducer from "../state-slice/expensetype-slice";
+import expenseTypeReducer from "../state-slice/expensetype-slice";
 import productReducer from "../state-slice/product-slice";
 import purchaseReducer from "../state-slice/purchase-slice";
 import reportReducer from "../state-slice/report-slice";
@@ -25,7 +25,7 @@ export default configureStore({
         category:categoryReducer,
         customer:customerReducer,
         expense:expenseReducer,
-        expensetype:expensetypeReducer,
+        expenseType:expenseTypeReducer,
         purchase:purchaseReducer,
         report:reportReducer,
         product:productReducer,

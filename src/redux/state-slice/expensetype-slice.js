@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-export const expensetypeSlice=createSlice({
-    name:'expensetype',
+export const expenseTypeSlice=createSlice({
+    name:'expenseType',
     initialState:{
         List:[],
         ListTotal:0,
@@ -24,5 +24,5 @@ export const expensetypeSlice=createSlice({
     }
 })
 
-export  const {SetExpenseTypeList,SetExpenseTypeListTotal,OnChangeExpenseTypeInput,ResetExpenseTypeFormValue}=expensetypeSlice.actions;
-export default  expensetypeSlice.reducer;
+export  const {SetExpenseTypeList,SetExpenseTypeListTotal,OnChangeExpenseTypeInput,ResetExpenseTypeFormValue}=expenseTypeSlice.actions;
+export default  expenseTypeSlice.reducer;
