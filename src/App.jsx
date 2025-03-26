@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import BrandCreateUpdatePage from "./pages/Brand/BrandCreateUpdatePage.jsx";
 
 const App = () => {
+
     return (
-        <div>
-         <h1>Hello World!</h1>
-        </div>
+        <Fragment>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/BrandCreateUpdatePage" element={<BrandCreateUpdatePage/>}/>
+
+
+                </Routes>
+            </BrowserRouter>
+        </Fragment>
     );
 };
 

@@ -9,24 +9,33 @@ import {BaseURL} from "../helper/config";
 
 const AxiosHeader={headers:{"token":getToken()}}
 
-export async function LoginRequest(email,password){
+export async function LoginRequest(email, password) {
     try {
-        store.dispatch(ShowLoader())
-        let URL=BaseURL+"/Login";
-        let PostBody={"email":email,"password":password}
-        let res =await axios.post(URL,PostBody);
-        setToken(res.data['token']);
-        setUserDetails(res.data['data']);
-        SuccessToast("Login Success");
-        store.dispatch(HideLoader())
-        return true;
-    }
-    catch (e) {
-        store.dispatch(HideLoader())
-        ErrorToast("Invalid Email or Password")
-        return  false;
+        store.dispatch(ShowLoader());
+
+        let URL = BaseURL + "/Login";
+        let PostBody = { email, password };
+
+        let res = await axios.post(URL, PostBody);
+
+        if (res.data.status === "success") {
+            setToken(res.data.token);
+            setUserDetails(res.data.data);
+            SuccessToast("Login Success");
+            store.dispatch(HideLoader());
+            return true;
+        } else {
+            ErrorToast(res.data.message || "Invalid Email or Password");
+            store.dispatch(HideLoader());
+            return false;
+        }
+    } catch (e) {
+        store.dispatch(HideLoader());
+        ErrorToast("Something went wrong. Please try again.");
+        return false;
     }
 }
+
 
 
 
