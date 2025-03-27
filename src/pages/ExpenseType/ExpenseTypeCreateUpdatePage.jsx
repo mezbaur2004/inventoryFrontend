@@ -1,8 +1,17 @@
+import {Fragment, lazy, Suspense} from "react";
+import MasterLayout from "../../components/MasterLayout/MasterLayout.jsx";
+import LazyLoader from "../../components/MasterLayout/LazyLoader.jsx";
+const ExpenseCreateUpdate = lazy(() => import("../../components/Expense/ExpenseCreateUpdate.jsx"));
+
 const ExpenseTypeCreateUpdatePage = () => {
     return (
-        <div>
-
-        </div>
+            <Fragment>
+                <MasterLayout>
+                    <Suspense fallback={<LazyLoader/>}>
+                        <ExpenseCreateUpdate/>
+                    </Suspense>
+                </MasterLayout>
+            </Fragment>
     );
 };
 
