@@ -11,8 +11,9 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function CustomerListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CustomersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = BaseURL+"/CustomerList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
+        console.log(result)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
@@ -37,9 +38,9 @@ export async function CustomerListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateCustomerRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CreateCustomers"
+        let URL = BaseURL+"/CreateCustomer"
         if(ObjectID!==0){
-            URL = BaseURL+"/UpdateCustomers/"+ObjectID;
+            URL = BaseURL+"/UpdateCustomer/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -70,12 +71,12 @@ export async function CreateCustomerRequest(PostBody,ObjectID) {
 export async function FillCustomerFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CustomersDetailsByID/"+ObjectID;
+        let URL = BaseURL+"/CustomerDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             let FormValue=result.data['data'][0];
-            store.dispatch(OnChangeCustomerInput({Name:"CustomerName",Value:FormValue['CustomerName']}));
+            store.dispatch(OnChangeCustomerInput({Name:"Name",Value:FormValue['Name']}));
             store.dispatch(OnChangeCustomerInput({Name:"Phone",Value:FormValue['Phone']}));
             store.dispatch(OnChangeCustomerInput({Name:"Email",Value:FormValue['Email']}));
             store.dispatch(OnChangeCustomerInput({Name:"Address",Value:FormValue['Address']}));
@@ -98,27 +99,33 @@ export async function FillCustomerFormRequest(ObjectID) {
 export async function DeleteCustomerRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/DeleteCustomer/"+ObjectID;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/DeleteCustomer/" + ObjectID;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
-        if (result.status === 200 && result.data['status'] === "associate") {
-            ErrorToast(result.data['data'])
-            return  false;
+
+        if (result.status === 200) {
+            if (result.data['status'] === "associate") {
+                ErrorToast(result.data['data']); // Handle association message
+                return false;
+            }
+            if (result.data['status'] === "associated") {  // Handle "associated with Sales" message
+                ErrorToast(result.data['data']);
+                return false;
+            }
+            if (result.data['status'] === "success") {
+                SuccessToast("Request Successful");
+                return true;
+            }
         }
-        if (result.status === 200 && result.data['status'] === "success") {
-            SuccessToast("Request Successful");
-            return  true
-        }
-        else {
-            ErrorToast("Request Fail ! Try Again")
-            return false;
-        }
+        ErrorToast("Request Fail! Try Again")
+        return false;
     }
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false;
     }
 }
+
 
 

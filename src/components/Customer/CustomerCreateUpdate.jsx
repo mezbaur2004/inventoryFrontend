@@ -25,16 +25,18 @@ const CustomerCreateUpdate = () => {
 
 
     const SaveChange = async () => {
-        if(IsEmpty(FormValue.CustomerName)){
+        if(IsEmpty(FormValue.Name)){
             ErrorToast("Customer Name Required !")
+
         }
         else if(IsEmpty(FormValue.Phone)){
             ErrorToast("Customer Phone  Number Required !")
         }
-        else if(IsEmail(FormValue.Email)){
+        else if(!IsEmail(FormValue.Email)){
             ErrorToast("Valid Email Address Required !")
         }
         else {
+            console.log("clicked")
             if(await CreateCustomerRequest(FormValue,ObjectID)){
                 navigate("/CustomerListPage")
             }
@@ -53,7 +55,7 @@ const CustomerCreateUpdate = () => {
 
                                     <div className="col-4 p-2">
                                         <label className="form-label">Customer Name</label>
-                                        <input onChange={(e)=>{store.dispatch(OnChangeCustomerInput({Name:"CustomerName",Value:e.target.value}))}} value={FormValue.CustomerName} className="form-control form-control-sm" type="text"/>
+                                        <input onChange={(e)=>{store.dispatch(OnChangeCustomerInput({Name:"Name",Value:e.target.value}))}} value={FormValue.Name} className="form-control form-control-sm" type="text"/>
                                     </div>
                                     <div className="col-4 p-2">
                                         <label className="form-label">Mobile No</label>

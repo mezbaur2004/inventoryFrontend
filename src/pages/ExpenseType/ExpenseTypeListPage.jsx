@@ -1,14 +1,14 @@
 import {Fragment, lazy, Suspense} from "react";
 import MasterLayout from "../../components/MasterLayout/MasterLayout.jsx";
 import LazyLoader from "../../components/MasterLayout/LazyLoader.jsx";
-const ExpenseList = lazy(() => import("../../components/Expense/ExpenseList.jsx"));
+const ExpenseTypeList = lazy(() => import("../../components/ExpenseType/ExpenseTypeList.jsx"));
 
 const ExpenseTypeListPage = () => {
     return (
             <Fragment>
                 <MasterLayout>
                     <Suspense fallback={<LazyLoader/>}>
-                        <ExpenseList/>
+                        <ExpenseTypeList/>
                     </Suspense>
                 </MasterLayout>
             </Fragment>

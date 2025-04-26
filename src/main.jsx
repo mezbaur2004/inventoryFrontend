@@ -7,9 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
       <Provider store={store}>
           <App />
       </Provider>
-  </StrictMode>,
 )

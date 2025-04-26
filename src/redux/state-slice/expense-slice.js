@@ -8,7 +8,7 @@ export const expenseSlice=createSlice({
         FormValue:{
             TypeID:"",
             Amount:"",
-            Note:""
+            Notes:""
         }
     },
     reducers:{

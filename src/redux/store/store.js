@@ -25,7 +25,7 @@ export default configureStore({
         category:categoryReducer,
         customer:customerReducer,
         expense:expenseReducer,
-        expenseType:expenseTypeReducer,
+        expensetype:expenseTypeReducer,
         purchase:purchaseReducer,
         report:reportReducer,
         product:productReducer,

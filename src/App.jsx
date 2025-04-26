@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import BrandCreateUpdatePage from "./pages/Brand/BrandCreateUpdatePage.jsx";
 import DashBoardPage from "./pages/Dashboard/DashBoardPage.jsx";
 import Page404 from "./pages/NotFound/Page404.jsx";
@@ -28,57 +28,85 @@ import ReturnReportPage from "./pages/Report/ReturnReportPage.jsx";
 import SaleReportPage from "./pages/Report/SaleReportPage.jsx";
 import ExpenseReportPage from "./pages/Report/ExpenseReportPage.jsx";
 import FullscreenLoader from "./components/MasterLayout/FullscreenLoader.jsx";
+import LoginPage from "./pages/User/LoginPage.jsx";
+import RegistrationPage from "./pages/User/RegistrationPage.jsx";
+import SendOTPPage from "./pages/User/SendOTPPage.jsx";
+import CreatePasswordPage from "./pages/User/CreatePasswordPage.jsx";
+import VerifyOTPPage from "./pages/User/VerifyOTPPage.jsx";
+import {getToken} from "./helper/SessionHelper.js";
+import {Toaster} from "react-hot-toast";
 
 const App = () => {
 
-    return (
-        <Fragment>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/BrandCreateUpdatePage" element={<BrandCreateUpdatePage/>}/>
-                    <Route path="/BrandListPage" element={<BrandListPage/>}/>
+    if(getToken()){
+        return (
+            <Fragment>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/BrandCreateUpdatePage" element={<BrandCreateUpdatePage/>}/>
+                        <Route path="/BrandListPage" element={<BrandListPage/>}/>
 
-                    <Route path="/CategoryCreateUpdatePage" element={<CategoryCreateUpdatePage/>}/>
-                    <Route path="/CategoryListPage" element={<CategoryListPage/>}/>
+                        <Route path="/CategoryCreateUpdatePage" element={<CategoryCreateUpdatePage/>}/>
+                        <Route path="/CategoryListPage" element={<CategoryListPage/>}/>
 
-                    <Route path="/CustomerCreateUpdatePage" element={<CustomerCreateUpdatePage/>}/>
-                    <Route path="/CustomerListPage" element={<CustomerListPage/>}/>
+                        <Route path="/CustomerCreateUpdatePage" element={<CustomerCreateUpdatePage/>}/>
+                        <Route path="/CustomerListPage" element={<CustomerListPage/>}/>
 
-                    <Route path="/ExpenseTypeCreateUpdatePage" element={<ExpenseTypeCreateUpdatePage/>}/>
-                    <Route path="/ExpenseTypeListPage" element={<ExpenseTypeListPage/>}/>
+                        <Route path="/ExpenseTypeCreateUpdatePage" element={<ExpenseTypeCreateUpdatePage/>}/>
+                        <Route path="/ExpenseTypeListPage" element={<ExpenseTypeListPage/>}/>
 
-                    <Route path="/ExpenseCreateUpdatePage" element={<ExpenseCreateUpdatePage/>}/>
-                    <Route path="/ExpenseListPage" element={<ExpenseListPage/>}/>
+                        <Route path="/ExpenseCreateUpdatePage" element={<ExpenseCreateUpdatePage/>}/>
+                        <Route path="/ExpenseListPage" element={<ExpenseListPage/>}/>
 
-                    <Route path="/ProductCreateUpdatePage" element={<ProductCreateUpdatePage/>}/>
-                    <Route path="/ProductListPage" element={<ProductListPage/>}/>
+                        <Route path="/ProductCreateUpdatePage" element={<ProductCreateUpdatePage/>}/>
+                        <Route path="/ProductListPage" element={<ProductListPage/>}/>
 
-                    <Route path="/PurchaseCreateUpdatePage" element={<PurchaseCreateUpdatePage/>}/>
-                    <Route path="/PurchaseListPage" element={<PurchaseListPage/>}/>
+                        <Route path="/PurchaseCreateUpdatePage" element={<PurchaseCreateUpdatePage/>}/>
+                        <Route path="/PurchaseListPage" element={<PurchaseListPage/>}/>
 
-                    <Route path="/ReturnCreateUpdatePage" element={<ReturnCreateUpdatePage/>}/>
-                    <Route path="/ReturnListPage" element={<ReturnListPage/>}/>
+                        <Route path="/ReturnCreateUpdatePage" element={<ReturnCreateUpdatePage/>}/>
+                        <Route path="/ReturnListPage" element={<ReturnListPage/>}/>
 
-                    <Route path="/SaleCreateUpdatePage" element={<SaleCreateUpdatePage/>}/>
-                    <Route path="/SaleListPage" element={<SaleListPage/>}/>
+                        <Route path="/SaleCreateUpdatePage" element={<SaleCreateUpdatePage/>}/>
+                        <Route path="/SaleListPage" element={<SaleListPage/>}/>
 
-                    <Route path="/SupplierCreateUpdatePage" element={<SupplierCreateUpdatePage/>}/>
-                    <Route path="/SupplierListPage" element={<SupplierListPage/>}/>
+                        <Route path="/SupplierCreateUpdatePage" element={<SupplierCreateUpdatePage/>}/>
+                        <Route path="/SupplierListPage" element={<SupplierListPage/>}/>
 
-                    <Route path="/PurchaseReportPage" element={<PurchaseReportPage/>}/>
-                    <Route path="/ReturnReportPage" element={<ReturnReportPage/>}/>
-                    <Route path="/SaleReportPage" element={<SaleReportPage/>}/>
-                    <Route path="/ExpenseReportPage" element={<ExpenseReportPage/>}/>
+                        <Route path="/PurchaseReportPage" element={<PurchaseReportPage/>}/>
+                        <Route path="/ReturnReportPage" element={<ReturnReportPage/>}/>
+                        <Route path="/SaleReportPage" element={<SaleReportPage/>}/>
+                        <Route path="/ExpenseReportPage" element={<ExpenseReportPage/>}/>
 
 
-                    <Route path="/" element={<DashBoardPage/>}/>
-                    <Route path="/Profile" element={<ProfilePage/>}/>
-                    <Route path="*" element={<Page404/>}/>
-                </Routes>
-            </BrowserRouter>
-            <FullscreenLoader/>
-        </Fragment>
-    );
+                        <Route path="/" element={<DashBoardPage/>}/>
+                        <Route path="/Profile" element={<ProfilePage/>}/>
+                        <Route path="*" element={<Page404/>}/>
+                    </Routes>
+                </BrowserRouter>
+                <Toaster/>
+                <FullscreenLoader/>
+            </Fragment>
+        );
+    }else{
+        return(
+          <Fragment>
+              <BrowserRouter>
+                  <Routes>
+                      <Route path="/" element={<Navigate to="/Login" replace />}/>
+                      <Route path="/Login" element={<LoginPage />}/>
+                      <Route path="/Registration" element={<RegistrationPage />}/>
+                      <Route path="/SendOTP" element={<SendOTPPage/>}/>
+                      <Route path="/VerifyOTP" element={<VerifyOTPPage/>}/>
+                      <Route path="/CreatePassword" element={<CreatePasswordPage/>}/>
+                      <Route path="*" element={<Page404/>}/>
+                  </Routes>
+              </BrowserRouter>
+              <Toaster/>
+              <FullscreenLoader/>
+          </Fragment>
+        );
+    }
 };
 
 export default App;

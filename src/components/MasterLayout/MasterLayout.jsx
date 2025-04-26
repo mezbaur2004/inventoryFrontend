@@ -157,12 +157,12 @@ const MasterLayout = ({ children }) => {
                 {
                     title: "New Sale",
                     icon: <BsCircle size={16} className="side-bar-subitem-icon" />,
-                    url: "/SalesCreateUpdatePage",
+                    url: "/SaleCreateUpdatePage",
                 },
                 {
                     title: "Sale List",
                     icon: <BsCircle size={16} className="side-bar-subitem-icon" />,
-                    url: "/SalesListPage",
+                    url: "/SaleListPage",
                 },
             ],
         },
@@ -263,7 +263,7 @@ const MasterLayout = ({ children }) => {
                 </NavLink>
                 <Accordion>
                     {sidebarItems.map((item, index) => (
-                        item.subMenu ? (
+                        item.subMenu && item.subMenu.length > 0 ? (
                             <Accordion.Item key={index} eventKey={`${index}`}>
                                 <Accordion.Header>
                                     <div className="side-bar-item">
@@ -285,11 +285,12 @@ const MasterLayout = ({ children }) => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         ) : (
-                            <NavLink key={index} to={item.url} className="side-bar-item">
+                            <NavLink key={index} to={item.url} className="side-bar-item dashb">
                                 {item.icon} {item.title}
                             </NavLink>
                         )
                     ))}
+
                 </Accordion>
             </div>
 
