@@ -5,7 +5,7 @@ import {
     ProductDropDownRequest
 } from "../../APIRequest/ReturnAPIRequest";
 import {useSelector} from "react-redux";
-import {BsCartCheck, BsTrash} from "react-icons/ai";
+import {BsCartCheck, BsTrash} from "react-icons/bs";
 import {ErrorToast, IsEmpty} from "../../helper/FormHelper";
 import store from "../../redux/store/store";
 import {OnChangeReturnInput, RemoveReturnItem, SetReturnItemList} from "../../redux/state-slice/return-slice";
@@ -87,7 +87,7 @@ const ReturnCreateUpdate = () => {
                                             <option value="">Select Customer</option>
                                             {
                                                 CustomerDropDown.map((item,i)=>{
-                                                    return( <option key={i.toLocaleString()} value={item._id}>{item.CustomerName}</option>)
+                                                    return( <option key={i.toLocaleString()} value={item._id}>{item.Name}</option>)
                                                 })
                                             }
                                         </select>
@@ -121,7 +121,7 @@ const ReturnCreateUpdate = () => {
 
                                     <div className="col-12 p-1">
                                         <label className="form-label">Note</label>
-                                        <input  onChange={(e)=>{store.dispatch(OnChangeReturnInput({Name:"Note",Value:e.target.value}))}}  className="form-control form-control-sm" type="number"/>
+                                        <input  onChange={(e)=>{store.dispatch(OnChangeReturnInput({Name:"Note",Value:e.target.value}))}}  className="form-control form-control-sm" type="text"/>
                                     </div>
 
 

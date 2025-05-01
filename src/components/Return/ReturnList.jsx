@@ -9,7 +9,7 @@ import moment from "moment/moment";
 
 const ReturnList = () => {
     let [searchKeyword,setSearchKeyword]=useState("0");
-    let [perPage,setPerPage]=useState(20);
+    let [perPage,setPerPage]=useState(10);
 
     useEffect(()=>{
         (async () => {
@@ -66,7 +66,9 @@ const ReturnList = () => {
                                         </div>
 
                                         <div className="col-2">
-                                            <select onChange={perPageOnChange} className="form-control mx-2 form-select-sm form-select form-control-sm" >
+                                            <select onChange={perPageOnChange}
+                                                    className="form-control mx-2 form-select-sm form-select form-control-sm">
+                                                <option value="10">10 Per Page</option>
                                                 <option value="20">20 Per Page</option>
                                                 <option value="30">30 Per Page</option>
                                                 <option value="50">50 Per Page</option>
@@ -99,10 +101,10 @@ const ReturnList = () => {
                                                     </thead>
                                                     <tbody>
                                                     {
-                                                        DataList.map((item,i)=>
-                                                            <tr>
+                                                        DataList?(DataList.map((item,i)=>
+                                                            <tr key={i}>
                                                                 <td>
-                                                                    <p className="text-xs text-start">{item.customers[0]['CustomerName']}</p>
+                                                                    <p className="text-xs text-start">{item.Customer[0]['Name']}</p>
                                                                 </td>
 
                                                                 <td>
@@ -146,7 +148,7 @@ const ReturnList = () => {
                                                                     </button>
                                                                 </td>
                                                             </tr>
-                                                        )
+                                                        )):(<h1>No Data Found</h1>)
                                                     }
 
                                                     </tbody>
