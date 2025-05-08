@@ -10,7 +10,9 @@ import {OnChangeSaleInput, RemoveSaleItem, SetSaleItemList} from "../../redux/st
 
 const SalesCreateUpdate = () => {
 
-    let productRef,qtyRef,unitPriceRef=useRef();
+    let productRef=useRef(null)
+    let qtyRef=useRef(null)
+    let unitPriceRef=useRef(null);
 
     useEffect(()=>{
         (async () => {
@@ -148,11 +150,11 @@ const SalesCreateUpdate = () => {
                                     </div>
                                     <div className="col-2 p-1">
                                         <label className="form-label">Qty</label>
-                                        <input ref={(input)=>qtyRef=input}  className="form-control form-control-sm" />
+                                        <input ref={(input)=>qtyRef=input}  className="form-control form-control-sm" type="number" />
                                     </div>
                                     <div className="col-2 p-1">
                                         <label className="form-label">Unit Price</label>
-                                        <input ref={(input)=>unitPriceRef=input} className="form-control form-control-sm" />
+                                        <input ref={(input)=>unitPriceRef=input} className="form-control form-control-sm" type="number" />
                                     </div>
                                     <div className="col-2 p-1">
                                         <label className="form-label">Add to cart</label>
@@ -175,17 +177,19 @@ const SalesCreateUpdate = () => {
                                                 </thead>
                                                 <tbody>
                                                 {
-                                                    SaleItemList.map((item,i)=>{
-                                                        return(
-                                                            <tr>
+                                                    SaleItemList?(SaleItemList.map((item,i)=>
+                                                        (
+                                                            <tr key={item._id}>
                                                                 <td>{item.ProductName}</td>
                                                                 <td>{item.Qty}</td>
                                                                 <td>{item.UnitCost}</td>
                                                                 <td>{item.Total}</td>
-                                                                <td><button onClick={removeCart.bind(this,i)} className="btn btn-outline-light text-danger p-2 mb-0 btn-sm ms-2"><BsTrash/></button></td>
+                                                                <td>
+                                                                    <button onClick={()=>removeCart(i)} className="btn btn-outline-light text-danger p-2 mb-0 btn-sm ms-2"><BsTrash/></button>
+                                                                </td>
                                                             </tr>
                                                         )
-                                                    })
+                                                    )):(<h1>Empty Cart</h1>)
                                                 }
                                                 </tbody>
                                             </table>

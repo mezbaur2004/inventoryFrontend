@@ -16,7 +16,7 @@ export async function SaleListRequest(pageNo, perPage, searchKeyword) {
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
                 store.dispatch(SetSaleList(result.data['data'][0]['Rows']))
-                store.dispatch(SetSaleListTotal(result.data['data'][0]['Total'][0]))
+                store.dispatch(SetSaleListTotal(result.data['data'][0]['Total']))
             } else {
                 store.dispatch(SetSaleList([]))
                 store.dispatch(SetSaleListTotal(0))

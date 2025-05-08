@@ -17,7 +17,7 @@ export async function PurchaseListRequest(pageNo, perPage, searchKeyword) {
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
                 store.dispatch(SetPurchaseList(result.data['data'][0]['Rows']))
-                store.dispatch(SetPurchaseListTotal(result.data['data'][0]['Total'][0]))
+                store.dispatch(SetPurchaseListTotal(result.data['data'][0]['Total']))
             } else {
                 store.dispatch(SetPurchaseList([]))
                 store.dispatch(SetPurchaseListTotal(0))

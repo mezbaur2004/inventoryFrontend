@@ -17,7 +17,7 @@ export async function ReturnListRequest(pageNo, perPage, searchKeyword) {
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
                 store.dispatch(SetReturnList(result.data['data'][0]['Rows']))
-                store.dispatch(SetReturnListTotal(result.data['data'][0]['Total'][0]))
+                store.dispatch(SetReturnListTotal(result.data['data'][0]['Total']))
             } else {
                 store.dispatch(SetReturnList([]))
                 store.dispatch(SetReturnListTotal(0))

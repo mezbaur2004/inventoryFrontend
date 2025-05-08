@@ -1,7 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {SaleListRequest} from "../../APIRequest/SaleAPIRequest";
 import {useSelector} from "react-redux";
-//import {Link} from "react-router-dom";
 import { AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import ReactPaginate from "react-paginate";
 import {NumericFormat} from "react-number-format";

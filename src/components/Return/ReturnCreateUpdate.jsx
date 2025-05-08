@@ -13,7 +13,9 @@ import {OnChangeReturnInput, RemoveReturnItem, SetReturnItemList} from "../../re
 
 const ReturnCreateUpdate = () => {
 
-    let productRef,qtyRef,unitPriceRef=useRef();
+    let productRef =useRef(null);
+    let qtyRef =useRef(null);
+    let unitPriceRef=useRef(null);
 
     useEffect(()=>{
         (async () => {
@@ -152,11 +154,11 @@ const ReturnCreateUpdate = () => {
                                     </div>
                                     <div className="col-2 p-1">
                                         <label className="form-label">Qty</label>
-                                        <input ref={(input)=>qtyRef=input}  className="form-control form-control-sm" />
+                                        <input ref={(input)=>qtyRef=input}  className="form-control form-control-sm" type="number" />
                                     </div>
                                     <div className="col-2 p-1">
                                         <label className="form-label">Unit Price</label>
-                                        <input ref={(input)=>unitPriceRef=input} className="form-control form-control-sm" />
+                                        <input ref={(input)=>unitPriceRef=input} className="form-control form-control-sm" type="number" />
                                     </div>
                                     <div className="col-2 p-1">
                                         <label className="form-label">Add to cart</label>
