@@ -76,7 +76,7 @@ const Dashboard = () => {
                 <div className="col-md-6 p-2">
                     <div className="card">
                         <div className="card-body">
-                            <span className="h6">Expense Last 30 Days</span>
+                            <span className="h6">Expenses Last 30 Days</span>
                             <ResponsiveContainer className="mt-4" width="100%" height={200}>
                                 <AreaChart width={500} height={200} data={ExpenseChart} margin={{top: 10, right: 30, left: 0, bottom: 0,}}>
                                     <CartesianGrid strokeDasharray="3 3" />
@@ -108,7 +108,7 @@ const Dashboard = () => {
                 <div className="col-md-6 p-2">
                     <div className="card">
                         <div className="card-body">
-                            <span className="h6">Purchase Last 30 Days</span>
+                            <span className="h6">Purchases Last 30 Days</span>
                             <ResponsiveContainer className="mt-4" width="100%" height={200}>
                                 <AreaChart width={500} height={200} data={PurchaseChart} margin={{top: 10, right: 30, left: 0, bottom: 0,}}>
                                     <CartesianGrid strokeDasharray="3 3" />
@@ -124,7 +124,7 @@ const Dashboard = () => {
                 <div className="col-md-6 p-2">
                     <div className="card">
                         <div className="card-body">
-                            <span className="h6">Return Last 30 Days</span>
+                            <span className="h6">Returns Last 30 Days</span>
                             <ResponsiveContainer className="mt-4" width="100%" height={200}>
                                 <AreaChart width={500} height={200} data={ReturnChart} margin={{top: 10, right: 30, left: 0, bottom: 0,}}>
                                     <CartesianGrid strokeDasharray="3 3" />
