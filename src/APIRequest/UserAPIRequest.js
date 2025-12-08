@@ -75,6 +75,25 @@ export async function RegistrationRequest(email,firstName,lastName,mobile,passwo
     }
 }
 
+
+export async function InitialHit(){
+    try {
+        store.dispatch(ShowLoader())
+        let URL=BaseURL+"/ProfileDetails";
+        let res=await axios.get(URL,AxiosHeader)
+        store.dispatch(HideLoader())
+        if(res.status===200){
+            store.dispatch(SetProfile(res.data['data'][0]))
+        }
+        else{
+            ErrorToast("Please wait 15s, Backend is on render free tier(cold start)")
+        }
+    }
+    catch (e){
+        store.dispatch(HideLoader())
+        ErrorToast("Please wait 15s, Backend is on render free tier(cold start)")
+    }
+}
 export async function GetProfileDetails(){
     try {
         store.dispatch(ShowLoader())

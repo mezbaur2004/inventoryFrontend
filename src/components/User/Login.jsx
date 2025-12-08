@@ -1,11 +1,17 @@
-import React, { Fragment, useRef } from 'react';
+import React, {Fragment, useEffect, useRef} from 'react';
 import { Link } from "react-router-dom";
 import { ErrorToast, IsEmail, IsEmpty } from "../../helper/FormHelper";
-import { LoginRequest } from "../../APIRequest/UserAPIRequest";
+import {InitialHit, LoginRequest} from "../../APIRequest/UserAPIRequest";
 
 const Login = () => {
     let emailRef = useRef(null);
     let passRef = useRef(null);
+
+    useEffect(() => {
+        (async () => {
+            await InitialHit();
+        })()
+    })
 
     const SubmitLogin = async () => {
         let email = emailRef.current.value;
@@ -30,6 +36,9 @@ const Login = () => {
                     <div className="col-md-7 col-lg-6 center-screen">
                         <div className="card w-90 p-4">
                             <div className="card-body">
+
+                                <p>test-email: mezbaur2004@gmail.com <p>password: abc123</p></p>
+
                                 <h3>SIGN IN</h3>
                                 <br />
                                 <input ref={emailRef} placeholder="User Email" className="form-control" type="email" />
