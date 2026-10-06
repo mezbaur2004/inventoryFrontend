@@ -2,9 +2,7 @@
 
 Live Demo: [https://inventory-frontend-mezbaur.vercel.app/](https://inventory-frontend-mezbaur.vercel.app/)
 
-**Admin Dashboard Access:**
-- Username: `mezbaur2004@gmail.com`
-- Password: `abc123`
+**Demo account:** [to be added: a dedicated demo login for the live app]
 
 > ⚠️ Note: Backend is hosted on Render, so the initial load may take around 15 seconds.
 
