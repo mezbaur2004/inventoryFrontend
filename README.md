@@ -2,7 +2,7 @@
 
 Live Demo: [https://inventory-frontend-mezbaur.vercel.app/](https://inventory-frontend-mezbaur.vercel.app/)
 
-**Demo account:** [to be added: a dedicated demo login for the live app]
+**Try it:** register an account on the live app. Each account sees only its own data.
 
 > ⚠️ Note: Backend is hosted on Render, so the initial load may take around 15 seconds.
 
